@@ -1,0 +1,50 @@
+# NPM Publish Configuration
+# Only include essential files for the CLI package
+
+# Include only these files
+!bin/
+!lib/
+!README.md
+!LICENSE
+!package.json
+
+# Exclude everything else
+*
+
+# Specifically exclude development files
+.git/
+.github/
+.vscode/
+.idea/
+*.log
+test.js
+PUBLISH.md
+.npmrc
+*.tgz
+*.tmp
+*.cache
+.DS_Store
+Thumbs.db
+
+# Exclude documentation (keep only README)
+ARCHITECTURE.md
+CONTRIBUTING.md
+DEMO.md
+IMPROVEMENTS.md
+STRUCTURE.md
+INDEX.md
+BRANDING.md
+CHANGELOG.md
+FORGE.md
+
+# Exclude test files
+test/
+tests/
+*.test.js
+*.spec.js
+
+# Exclude development dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

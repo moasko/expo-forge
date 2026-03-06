@@ -1,0 +1,63 @@
+{
+  "name": "expo-forge",
+  "version": "2.0.1",
+  "description": "Forge modern Expo apps with bulletproof architecture - TanStack Query, Zustand, NativeWind",
+  "author": "moasko <moasko.dev@gmail.com>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "keywords": [
+    "expo",
+    "react-native",
+    "generator",
+    "scaffold",
+    "cli",
+    "typescript",
+    "tanstack-query",
+    "zustand",
+    "nativewind",
+    "bulletproof",
+    "architecture",
+    "mobile",
+    "cross-platform"
+  ],
+  "scripts": {
+    "init": "node init-expo.js",
+    "init:custom": "node init-expo.js $npm_config_name",
+    "gen": "node generate-feature.js generate feature",
+    "gen:feature": "node generate-feature.js generate feature $npm_config_name",
+    "help": "echo 'Usage: npm run init [projectName] or npm run gen:feature -- --name=featureName'",
+    "test": "node test.js",
+    "prepublishOnly": "npm run test",
+    "publish:beta": "npm publish --tag beta",
+    "publish:latest": "npm publish",
+    "pack": "npm pack",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major"
+  },
+  "dependencies": {
+    "commander": "^11.1.0"
+  },
+  "bin": {
+    "expo-forge": "bin/expo-forge.js"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "README.md",
+    "LICENSE"
+  ],
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moasko/expo-forge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/moasko/expo-forge/issues"
+  },
+  "homepage": "https://github.com/moasko/expo-forge#readme"
+}

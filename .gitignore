@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# NPM
+npm-debug.log*
+.npm
+.npmrc
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build outputs
+dist/
+build/
+.next/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Tests
+.nyc_output/
+coverage/
+
+# Package
+*.tgz
+expo-forge-*.tgz
