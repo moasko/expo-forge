@@ -1,190 +1,173 @@
-# 🔥 Expo Forge
+# 🔥 EXPO FORGE 🔥
 
-> Forge bulletproof Expo apps with modern architecture
+```
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║   ███████╗██╗  ██╗██████╗  ██████╗     ███████╗ ██████╗ ██████╗  ██████╗ ███████╗
+║   ██╔════╝╚██╗██╔╝██╔══██╗██╔═══██╗    ██╔════╝██╔═══██╗██╔══██╗██╔════╝ ██╔════╝
+║   █████╗   ╚███╔╝ ██████╔╝██║   ██║    █████╗  ██║   ██║██████╔╝██║  ███╗█████╗
+║   ██╔══╝   ██╔██╗ ██╔═══╝ ██║   ██║    ██╔══╝  ██║   ██║██╔══██╗██║   ██║██╔══╝
+║   ███████╗██╔╝ ██╗██║     ╚██████╔╝    ██║     ╚██████╔╝██║  ██║╚██████╔╝███████╗
+║   ╚══════╝╚═╝  ╚═╝╚═╝      ╚═════╝     ╚═╝      ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚══════╝
+║                                                              ║
+║              🔥 BULLETPROOF EXPO ARCHITECTURE 🔥              ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+```
 
-[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/yourusername/expo-forge)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Expo](https://img.shields.io/badge/Expo-~50.0.0-black.svg)](https://expo.dev/)
+## 🏗️ Forge Modern Expo Apps
 
-**Expo Forge** is a professional code generator that creates modern, scalable Expo applications with bulletproof architecture. Built with TanStack Query, Zustand, and NativeWind for production-ready apps.
+**Expo Forge** is your ultimate toolkit for crafting production-ready Expo applications with enterprise-grade architecture.
 
-## ⚡ Quick Start
+### ⚡ What Makes It Special?
+
+- **🔥 Bulletproof Architecture** — Feature-based, scalable, and maintainable.
+- **⚡ Zero-Install Launch** — No global setup required. Just `npx` and go.
+- **🎯 Production Ready** — Error handling, loading states, full TypeScript.
+- **🛠️ Great DX** — Hot reload, debugging, and modern tooling out of the box.
+- **📱 Cross-Platform** — iOS, Android, Web from a single codebase.
+
+---
+
+### 🚀 Start Forging — Zero Install Required
 
 ```bash
-# Install globally (optional)
+# ✅ No install needed — just run it!
+npx create-expo-forge-app my-epic-app
+```
+
+That's it. Your fully configured project is ready in seconds.
+
+---
+
+### Or Use the Full CLI
+
+```bash
+# Install once
 npm install -g expo-forge
 
-# Initialize a new project
-npx expo-forge init my-awesome-app
+# Forge a project
+expo-forge init my-epic-app
 
-# Generate features
-cd my-awesome-app
-npx expo-forge generate feature booking
-npx expo-forge generate feature payment
-npx expo-forge generate feature reviews
+# Add powerful features
+cd my-epic-app
+npx expo-forge generate feature auth
+npx expo-forge generate feature dashboard
+npx expo-forge generate feature payments
 
 # Start developing
 npx expo start
 ```
 
-## 🏗️ What You Get
+---
 
-### ✨ Modern Stack
-- **Expo Router** - File-based routing
-- **TanStack Query** - Powerful data fetching
-- **Zustand** - Lightweight state management
-- **NativeWind** - Tailwind CSS for React Native
-- **Axios** - HTTP client with interceptors
-- **TypeScript** - Full type safety
+### 🏛️ Architecture Overview
 
-### 🏛️ Bulletproof Architecture
 ```
-src/
-├── api/           # Query clients & providers
-├── app/           # File-based routing (Expo Router)
-├── components/    # Reusable UI components
-├── features/      # Feature-based architecture
-│   ├── booking/   # Each feature is self-contained
-│   ├── payment/   # ├── api/ (hooks)
-│   └── reviews/   # ├── components/
-├── hooks/         # Global custom hooks
-├── store/         # Zustand stores
-├── types/         # Global TypeScript types
-├── utils/         # Helper functions
-└── constants/     # App constants & config
+🔥 EXPO FORGE STRUCTURE
+├── 🎯 app/           # File-based routing (Expo Router)
+├── 🏗️ features/      # Self-contained business logic
+│   ├── auth/         # ├── api/ (TanStack Query)
+│   ├── dashboard/    # ├── components/ (UI)
+│   └── payments/     # ├── store/ (Zustand)
+├── 🛠️ lib/           # Shared utilities (api-client, etc.)
+├── 🎨 components/    # Reusable UI components
+└── ⚙️ constants/     # App config & environment
 ```
-
-### 🚀 Generated Features Include
-- **API Layer** - TanStack Query hooks (CRUD operations)
-- **State Management** - Zustand stores with persistence
-- **UI Components** - NativeWind styled components
-- **Type Safety** - Full TypeScript definitions
-- **Error Handling** - Comprehensive error boundaries
-- **Loading States** - Built-in loading & error states
-
-## 📖 Usage
-
-### Initialize Project
-```bash
-npx expo-forge init my-app
-# Creates complete Expo project with all dependencies
-```
-
-### Generate Features
-```bash
-npx expo-forge generate feature user-management
-npx expo-forge generate feature notifications
-npx expo-forge generate feature analytics
-```
-
-### Custom Configuration
-```javascript
-// lib/config.js - Customize dependencies
-const DEPENDENCIES = [
-  'expo-router',
-  '@tanstack/react-query',
-  'zustand',
-  // Add your packages here
-];
-```
-
-## 🎯 Why Expo Forge?
-
-| Feature | Expo Forge | Manual Setup |
-|---------|------------|--------------|
-| **Setup Time** | 2 minutes | 30+ minutes |
-| **Architecture** | Bulletproof | Variable |
-| **Type Safety** | 100% | Manual |
-| **Best Practices** | Built-in | Experience required |
-| **Scalability** | Enterprise-ready | Depends on dev |
-| **Consistency** | Guaranteed | Team dependent |
-
-## 🛠️ CLI Commands
-
-```bash
-# Initialize new project
-expo-forge init <project-name>
-
-# Generate feature
-expo-forge generate feature <feature-name>
-
-# Show help
-expo-forge --help
-
-# Show version
-expo-forge --version
-```
-
-## 📚 Documentation
-
-- **[Quick Start](DEMO.md)** - Get started in 5 minutes
-- **[Architecture](ARCHITECTURE.md)** - Technical deep dive
-- **[Contributing](CONTRIBUTING.md)** - Extend and contribute
-- **[API Reference](README.md)** - Complete documentation
-
-## 🔧 Customization
-
-### Add Custom Dependencies
-```javascript
-// lib/config.js
-const DEPENDENCIES = [
-  // ... existing
-  'your-custom-package',
-];
-```
-
-### Create Custom Templates
-```javascript
-// lib/templates.js
-featureTemplates.customFeature = (name) => `
-  // Your custom template
-`;
-```
-
-### Extend CLI Commands
-```javascript
-// Add to package.json scripts
-"custom": "node custom-command.js"
-```
-
-## 🌟 Features
-
-- ✅ **Modular Architecture** - Clean separation of concerns
-- ✅ **Type-Safe** - Full TypeScript support
-- ✅ **Production Ready** - Error handling, loading states
-- ✅ **Extensible** - Easy to add new features
-- ✅ **Modern Stack** - Latest Expo and React Native
-- ✅ **Developer Experience** - Hot reload, debugging
-- ✅ **Cross-Platform** - iOS, Android, Web support
-
-## 📈 Roadmap
-
-- [ ] React Native Web templates
-- [ ] Authentication boilerplate
-- [ ] Database integration (Prisma)
-- [ ] Testing setup (Jest, Testing Library)
-- [ ] CI/CD templates
-- [ ] Storybook integration
-- [ ] Performance monitoring
-
-## 🤝 Contributing
-
-We welcome contributions! See our [Contributing Guide](CONTRIBUTING.md) for details.
-
-1. Fork the repository
-2. Create your feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📄 License
-
-MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-Built with ❤️ using modern React Native tools and best practices.
 
 ---
 
-**Forge your next Expo app with confidence!** 🚀
+### 🔥 Tech Stack
+
+| Category    | Technology        | Why?                                   |
+| ----------- | ----------------- | -------------------------------------- |
+| **Routing** | Expo Router       | File-based, type-safe navigation       |
+| **Data**    | TanStack Query v5 | Powerful caching & background updates  |
+| **State**   | Zustand           | Lightweight, scalable state management |
+| **Styling** | NativeWind        | Tailwind CSS for React Native          |
+| **HTTP**    | Axios             | Robust client with interceptors        |
+| **Types**   | TypeScript        | Full type safety and better DX         |
+
+---
+
+### 🎯 Feature Highlights
+
+- ✅ **Zero Config** — Works out of the box
+- ✅ **Type Safe** — Full TypeScript coverage
+- ✅ **Modern Stack** — Latest Expo and React Native
+- ✅ **Scalable** — Feature-based architecture
+- ✅ **Testable** — Modular design
+- ✅ **Extensible** — Add custom templates and features
+
+---
+
+### 🛠️ CLI Commands
+
+```bash
+# ⭐ Zero-install (recommended)
+npx create-expo-forge-app <name>
+
+# Full CLI (after global install)
+expo-forge init <name>
+expo-forge generate feature <name>
+expo-forge --version
+expo-forge --help
+```
+
+---
+
+### 🌟 Why Choose Expo Forge?
+
+| Aspect             | Expo Forge       | Manual Setup        |
+| ------------------ | ---------------- | ------------------- |
+| **Time to Start**  | `npx` — instant  | 30+ min             |
+| **Architecture**   | Enterprise-grade | Developer dependent |
+| **Best Practices** | Built-in         | Manual              |
+| **Scalability**    | Guaranteed       | Depends on dev      |
+| **Type Safety**    | 100%             | Partial             |
+| **Error Handling** | Comprehensive    | Basic               |
+
+---
+
+### 📚 Documentation
+
+- **[🏁 Quick Start](DEMO.md)** — Get forging in 5 minutes
+- **[🏗️ Architecture](ARCHITECTURE.md)** — Deep technical dive
+- **[🛠️ Contributing](CONTRIBUTING.md)** — Extend and customize
+- **[📖 API Docs](README.md)** — Complete reference
+- **[📦 Publishing](PUBLISH.md)** — NPM publication guide
+
+---
+
+### 🤝 Community
+
+Join developers forging the future of Expo apps!
+
+- **GitHub**: [moasko/expo-forge](https://github.com/moasko/expo-forge)
+- **Issues**: Report bugs and request features
+- **Discussions**: Share ideas and get help
+
+---
+
+### 📈 Roadmap
+
+- [ ] **Auth Boilerplate** — Complete authentication flow
+- [ ] **Database Integration** — Prisma + SQLite/PostgreSQL
+- [ ] **Testing Suite** — Jest + Testing Library setup
+- [ ] **Storybook** — Component development environment
+- [ ] **CI/CD Templates** — GitHub Actions, EAS
+- [ ] **Performance Monitoring** — Sentry integration
+
+---
+
+## 🔥 Ready to Forge?
+
+```bash
+npx create-expo-forge-app my-forge-app
+```
+
+**Forge your next Expo masterpiece!** ⚒️✨
+
+---
+
+_Built with ❤️ by [moasko](https://github.com/moasko) for the Expo community_

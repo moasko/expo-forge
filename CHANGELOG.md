@@ -1,5 +1,15 @@
 # 📋 Changelog - Expo Forge
 
+## [2.1.1] - 2026-03-06
+
+### ✨ New Features
+
+- **🚀 `npx create-expo-forge-app <name>`**: Now supports zero-install project creation, just like `create-react-app`. No global install required — npx downloads and runs the CLI on-the-fly.
+- **🔀 Dual-mode CLI**: The binary auto-detects if it was invoked as `create-expo-forge-app` and routes directly to project initialization without needing a subcommand.
+- **📝 All documentation files translated to English**: Every `.md` file in the project is now fully in English for global accessibility.
+
+---
+
 ## [2.1.0] - 2026-03-06
 
 ### 🚀 Enhancements & Professional Polish
