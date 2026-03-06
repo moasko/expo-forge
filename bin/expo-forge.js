@@ -1,25 +1,29 @@
 #!/usr/bin/env node
 
-const { program } = require('commander');
-const path = require('path');
+const { program } = require("commander");
+const path = require("path");
 
 // Import our modules
-const initExpo = require('../lib/initExpo');
-const featureGenerator = require('../lib/featureGenerator');
-const logger = require('../lib/logger');
+const initExpo = require("../lib/initExpo");
+const featureGenerator = require("../lib/featureGenerator");
+const logger = require("../lib/logger");
+
+const pkg = require("../package.json");
 
 program
-  .name('expo-forge')
-  .description('Forge modern Expo apps with bulletproof architecture')
-  .version('1.0.0');
+  .name("expo-forge")
+  .description("Forge modern Expo apps with bulletproof architecture")
+  .version(pkg.version);
 
 program
-  .command('init [projectName]')
-  .description('Initialize a new Expo project with bulletproof architecture')
+  .command("init [projectName]")
+  .description("Initialize a new Expo project with bulletproof architecture")
   .action(async (projectName) => {
     try {
       if (!projectName) {
-        logger.error('Please provide a project name: expo-forge init <projectName>');
+        logger.error(
+          "Please provide a project name: expo-forge init <projectName>",
+        );
         process.exit(1);
       }
 
@@ -34,11 +38,11 @@ program
   });
 
 program
-  .command('generate <type> <name>')
-  .description('Generate a new feature or component')
+  .command("generate <type> <name>")
+  .description("Generate a new feature or component")
   .action(async (type, name) => {
     try {
-      if (type !== 'feature') {
+      if (type !== "feature") {
         logger.error('Currently only "feature" type is supported');
         process.exit(1);
       }
@@ -53,13 +57,16 @@ program
   });
 
 // Add help examples
-program.addHelpText('after', `
+program.addHelpText(
+  "after",
+  `
 Examples:
   $ expo-forge init my-app
   $ expo-forge generate feature booking
 
 For more information, visit: https://github.com/moasko/expo-forge
-`);
+`,
+);
 
 // Parse command line arguments
 program.parse();
