@@ -41,7 +41,8 @@
     "commander": "^11.1.0"
   },
   "bin": {
-    "expo-forge": "bin/expo-forge.js"
+    "expo-forge": "bin/expo-forge.js",
+    "create-expo-forge-app": "bin/expo-forge.js"
   },
   "engines": {
     "node": ">=16.0.0",
