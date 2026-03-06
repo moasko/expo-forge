@@ -1,266 +1,285 @@
 # 📚 Index & Navigation
 
-Welcome to **Expo Forge** - the refactored bulletproof Expo architecture generator! This file guides you through the consolidated structure.
+Welcome to **Expo Forge** - the bulletproof Expo architecture generator! This guide helps you navigate the project structure and documentation.
 
 ## 🗂️ Complete Structure
 
 ```
 expo/
 │
-├── 📄 Fichiers Principaux (Entry Points)
-│   ├── init-expo.js         ← Initialiser un projet
-│   └── generate-feature.js  ← Générer une feature
+├── 📄 Main Files (Entry Points)
+│   ├── init-expo.js         ← Project initialization
+│   └── generate-feature.js  ← Feature generation
 │
-├── 📦 Modules (lib/)
-│   ├── config.js            ← Configuration centralisée
-│   ├── executor.js          ← Exécution de commandes
-│   ├── featureGenerator.js  ← Logique de génération
-│   ├── fileWriter.js        ← Gestion de fichiers
-│   ├── helpers.js           ← Utilitaires
-│   ├── initExpo.js          ← Orchestration init
-│   ├── logger.js            ← Logs formatés
-│   └── templates.js         ← Tous les templates
+├── 📦 Core Modules (lib/)
+│   ├── config.js            ← Centralized configuration
+│   ├── executor.js          ← Shell command runner
+│   ├── featureGenerator.js  ← Domain generation logic
+│   ├── fileWriter.js        ← File I/O operations
+│   ├── helpers.js           ← String & utility helpers
+│   ├── initExpo.js          ← Init orchestration
+│   ├── logger.js            ← Formatted CLI logging
+│   └── templates.js         ← All code templates
 │
 ├── 📖 Documentation
-│   ├── README.md            ← Documentation principale
-│   ├── ARCHITECTURE.md      ← Architecture technique
-│   ├── CONTRIBUTING.md      ← Guide de contribution
-│   ├── DEMO.md              ← Quickstart & exemples
-│   ├── STRUCTURE.md         ← Avant/Après
-│   ├── IMPROVEMENTS.md      ← Détail des améliorations
-│   └── INDEX.md             ← Ce fichier
+│   ├── README.md            ← Main documentation
+│   ├── ARCHITECTURE.md      ← Technical architecture
+│   ├── CONTRIBUTING.md      ← Contribution & extension guide
+│   ├── DEMO.md              ← Quickstart & examples
+│   ├── STRUCTURE.md         ← Before/After overview
+│   ├── IMPROVEMENTS.md      ← Detailed improvements
+│   └── INDEX.md             ← This file
 │
 ├── 📝 Configuration
-│   └── package.json         ← NPM configuration
+│   └── package.json         ← Project meta & scripts
 │
-└── .gitignore (si présent)
+└── .gitignore               ← Git exclusion rules
 ```
 
-## 🎯 Où Aller Pour...
+## 🎯 Quick Navigation
 
-### 🚀 **Démarrer Rapidement**
-```
-→ DEMO.md : 5 minutes pour essayer
-```
+### 🚀 **Getting Started**
 
-### 📚 **Apprendre l'Architecture**
 ```
-→ ARCHITECTURE.md : Diagrammes et flux
-→ STRUCTURE.md : Avant/Après comparaison
+→ DEMO.md : 5 minutes to try it out
 ```
 
-### 🔧 **Utiliser le Générateur**
-```
-→ README.md : Documentation complète
-→ DEMO.md : Exemples pratiques
-```
+### 📚 **Learn the Architecture**
 
-### 🤝 **Contribuer/Étendre**
 ```
-→ CONTRIBUTING.md : Guide de contribution
-→ ARCHITECTURE.md : Comment ça marche
-→ lib/*.js : Lire le code source
+→ ARCHITECTURE.md : Diagrams and data flows
+→ STRUCTURE.md : Before/After architectural comparison
 ```
 
-### 📊 **Comprendre les Améliorations**
-```
-→ IMPROVEMENTS.md : Avant/Après détaillé
-→ STRUCTURE.md : Métriques de qualité
-```
+### 🔧 **Using the Generator**
 
-### 💻 **Coder avec le Générateur**
 ```
-→ lib/templates.js : Voir tous les templates
-→ lib/config.js : Configuration
-→ lib/helpers.js : Utilitaires disponibles
+→ README.md : Full usage documentation
+→ DEMO.md : Practical code examples
 ```
 
-## 📖 Guides par Cas d'Usage
+### 🤝 **Contributing & Extending**
 
-### cas 1️⃣ : "Je veux l'utiliser rapidement"
-1. Lire [DEMO.md](DEMO.md) (5 min)
-2. Exécuter: `npm run init my-app`
-3. Exécuter: `npm run gen:feature -- --name=booking`
-4. Vérifier: `ls my-app/src/features/booking`
+```
+→ CONTRIBUTING.md : Official extension guide
+→ ARCHITECTURE.md : How it works under the hood
+→ lib/*.js : Browse the source code
+```
 
-### cas 2️⃣ : "Je veux comprendre comment ça marche"
-1. Lire [ARCHITECTURE.md](ARCHITECTURE.md)
-2. Lire [STRUCTURE.md](STRUCTURE.md)
-3. Explorer [lib/](lib/) fichier par fichier
-4. Lire les commentaires dans le code
+### 📊 **Understand the Refactor**
 
-### cas 3️⃣ : "Je veux ajouter une fonctionnalité"
-1. Lire [CONTRIBUTING.md](CONTRIBUTING.md)
-2. Décider dans quel module ajouter
-3. Modifier le module concerné
-4. Tester manuellement
-5. Documenter votre changement
+```
+→ IMPROVEMENTS.md : Detailed Before/After analysis
+→ STRUCTURE.md : Quality & complexity metrics
+```
 
-### cas 4️⃣ : "Je veux utiliser dans mon projet"
-1. Copier la structure `lib/` dans votre projet
-2. Importer ce dont vous avez besoin:
+### 💻 **Developing with Forge**
+
+```
+→ lib/templates.js : Browse all code templates
+→ lib/config.js : Global configuration & dependencies
+→ lib/helpers.js : Available utility functions
+```
+
+## 📖 Guides by Use Case
+
+### Case 1️⃣ : "I want to try it quickly"
+
+1. Read [DEMO.md](DEMO.md) (5 min).
+2. Run: `npm run init my-app`.
+3. Run: `npm run gen:feature -- --name=booking`.
+4. Check: `ls my-app/src/features/booking`.
+
+### Case 2️⃣ : "I want to understand how it works"
+
+1. Read [ARCHITECTURE.md](ARCHITECTURE.md).
+2. Read [STRUCTURE.md](STRUCTURE.md).
+3. Explore [lib/](lib/) file by file.
+4. Read the in-code comments.
+
+### Case 3️⃣ : "I want to add a new feature to the generator"
+
+1. Read [CONTRIBUTING.md](CONTRIBUTING.md).
+2. Decide which module to update.
+3. Modify the relevant module in `lib/`.
+4. Test manually by running the CLI.
+5. Document your changes.
+
+### Case 4️⃣ : "I want to use Forge in my own project"
+
+1. Copy the `lib/` directory into your project.
+2. Import what you need:
    ```javascript
-   const { initializeProject } = require('./lib/initExpo');
-   const { generateModernFeature } = require('./lib/featureGenerator');
+   const { initializeProject } = require("./lib/initExpo");
+   const { generateModernFeature } = require("./lib/featureGenerator");
    ```
-3. Utiliser programmatiquement
-4. Adapter selon vos besoins
+3. Call programmatically from your own scripts.
+4. Adapt templates as needed.
 
-### cas 5️⃣ : "Je veux tester/déboguer"
-1. Lire [CONTRIBUTING.md](CONTRIBUTING.md) - Section Testing
-2. Créer une app de test: `node init-expo.js test-app`
-3. Générer une feature: `node generate-feature.js generate feature test`
-4. Vérifier la structure générée
-5. Déboguer dans [lib/](lib/)
+### Case 5️⃣ : "I want to test or debug"
 
-### cas 6️⃣ : "Je veux contribuer"
-1. Fork le repository
-2. Lire [CONTRIBUTING.md](CONTRIBUTING.md)
-3. Faire vos modifications
-4. Tester
-5. Créer une Pull Request
+1. Read [CONTRIBUTING.md](CONTRIBUTING.md) – Testing section.
+2. Create a test app: `node init-expo.js test-app`.
+3. Generate a feature: `node generate-feature.js generate feature test`.
+4. Verify the generated structure.
+5. Debug within [lib/](lib/).
 
-## 📑 Fichiers Documentation
+### Case 6️⃣ : "I want to contribute back"
+
+1. Fork the repository.
+2. Read [CONTRIBUTING.md](CONTRIBUTING.md).
+3. Implement your improvements.
+4. Run tests.
+5. Create a Pull Request.
+
+## 📑 Documentation Files
 
 ### [README.md](README.md) 📘
-**Pour:** Utilisation générale  
-**Temps:** 10 minutes  
-**Contient:**
-- Vue d'ensemble du projet
-- Instructions d'installation
-- Guide d'utilisation
-- API des modules
-- Stack technologique
+
+**Best for:** General usage & installation.  
+**Time:** 10 minutes.  
+**Includes:**
+
+- Project overview.
+- Installation instructions.
+- Usage guide.
+- Technical stack details.
+- CLI API reference.
 
 ### [ARCHITECTURE.md](ARCHITECTURE.md) 🏗️
-**Pour:** Comprendre le design  
-**Temps:** 15 minutes  
-**Contient:**
-- Organigramme des modules
-- Flux d'exécution détaillé
-- Dépendances entre modules
-- Responsabilités par module
-- Points d'extension
+
+**Best for:** Technical deep dives.  
+**Time:** 15 minutes.
+
+- Module organigram.
+- Detailed execution flows.
+- Inter-module dependencies.
+- Responsibilities per module.
+- Extension points.
 
 ### [CONTRIBUTING.md](CONTRIBUTING.md) 🤝
-**Pour:** Contribuer des améliorations  
-**Temps:** 20 minutes  
-**Contient:**
-- Comment ajouter une dépendance
-- Comment ajouter un template
-- Comment ajouter une étape
-- Comment ajouter un helper
-- Comment ajouter un module entier
-- Principes de design (SOLID)
-- Exemples pratiques
-- Checklist avant commit
+
+**Best for:** Developers and contributors.  
+**Time:** 20 minutes.
+
+- How to add dependencies, templates, steps, or helpers.
+- Full custom module addition guide.
+- Design principles (SOLID).
+- Manual & unit testing guide.
+- Pre-commit checklist.
 
 ### [DEMO.md](DEMO.md) 🎬
-**Pour:** Essayer rapidement  
-**Temps:** 5 minutes  
-**Contient:**
-- Étapes du démarrage rapide
-- Exemples d'utilisation dans le code
-- Structure finale complète
-- Intégration dans une vraie app
-- Dépannage
+
+**Best for:** Direct action & quick wins.  
+**Time:** 5 minutes.
+
+- Quickstart steps.
+- Code usage examples.
+- Complete final structure overview.
+- Troubleshooting tips.
 
 ### [STRUCTURE.md](STRUCTURE.md) 📊
-**Pour:** Voir les améliorations  
-**Temps:** 5 minutes  
-**Contient:**
-- Avant vs Après
-- Tableau de comparaison
-- Flux de responsabilités
-- Avantages clés
-- Principes appliqués
-- Évolution future
+
+**Best for:** Understanding the refactor.  
+**Time:** 5 minutes.
+
+- Before vs After comparison.
+- Metrics & quality gains.
+- Responsibility flow diagrams.
+- Future evolution goals.
 
 ### [IMPROVEMENTS.md](IMPROVEMENTS.md) ✨
-**Pour:** Détail des changements  
-**Temps:** 15 minutes  
-**Contient:**
-- Avant vs Après détaillé
-- Métriques de qualité
-- Cas d'usage comparés
-- Impacts sur maintenance
-- Tests possibles
 
-## 🎓 Parcours d'Apprentissage
+**Best for:** Detailed metric analysis.  
+**Time:** 15 minutes.
 
-### Débutant (30 min)
-1. [DEMO.md](DEMO.md) - Quickstart
-2. [README.md](README.md) - Overview
-3. Essayer: `npm run init`
+- Detailed Before/After code snippets.
+- Quality metrics & benchmarks.
+- Comparative use cases.
+- Impact on long-term maintenance.
 
-### Intermédiaire (1 heure)
-1. [STRUCTURE.md](STRUCTURE.md) - Comparaison
-2. [ARCHITECTURE.md](ARCHITECTURE.md) - Architecture
-3. Explorer [lib/](lib/) - Lire le code
-4. [CONTRIBUTING.md](CONTRIBUTING.md) - Extensions simples
+## 🎓 Learning Paths
 
-### Avancé (2 heures)
-1. Lire tout le code [lib/](lib/)
-2. Lire tous les templates [lib/templates.js](lib/templates.js)
-3. [CONTRIBUTING.md](CONTRIBUTING.md) - Concepts avancés
-4. Créer votre propre module
+### Beginner (30 min)
 
-## 💡 FAQ Rapide
+1. [DEMO.md](DEMO.md) - Quickstart.
+2. [README.md](README.md) - Project Overview.
+3. Run: `npm run init` manually.
 
-### Q: Par où je commence?
-**R:** Lisez [DEMO.md](DEMO.md) - 5 minutes suffit!
+### Intermediate (1 hour)
 
-### Q: Comment ça marche techniquement?
-**R:** Lisez [ARCHITECTURE.md](ARCHITECTURE.md) pour les diagrammes.
+1. [STRUCTURE.md](STRUCTURE.md) - Structural comparison.
+2. [ARCHITECTURE.md](ARCHITECTURE.md) - Under-the-hood.
+3. Explore [lib/](lib/) - Read the source code.
+4. [CONTRIBUTING.md](CONTRIBUTING.md) - Simple extensions.
 
-### Q: Je veux ajouter une fonctionnalité
-**R:** Suivez [CONTRIBUTING.md](CONTRIBUTING.md) étape par étape.
+### Advanced (2 hours)
 
-### Q: Où sont les templates?
-**R:** Tout dans [lib/templates.js](lib/templates.js).
+1. Read entire [lib/](lib/) source code.
+2. Review all [lib/templates.js](lib/templates.js).
+3. [CONTRIBUTING.md](CONTRIBUTING.md) - Advanced architectural concepts.
+4. Build your own custom generator module.
 
-### Q: Je veux personnaliser les dépendances
-**R:** Modifiez [lib/config.js](lib/config.js).
+## 💡 Quick FAQ
 
-### Q: Je veux réutiliser ce code ailleurs
-**R:** Lisez le cas d'usage 4 ci-dessus.
+### Q: Where do I start?
 
-### Q: Qu'est-ce qui a changé?
-**R:** Lisez [IMPROVEMENTS.md](IMPROVEMENTS.md) ou [STRUCTURE.md](STRUCTURE.md).
+**A:** Read [DEMO.md](DEMO.md) first – 5 minutes is all you need!
 
-### Q: Comment tester?
-**R:** Lisez [DEMO.md](DEMO.md) - Section Testing.
+### Q: How does it work technically?
 
-## 🔗 Navigation Rapide
+**A:** Check [ARCHITECTURE.md](ARCHITECTURE.md) for technical diagrams.
 
-| Besoin | Fichier |
-|--------|---------|
-| Démarrer | [DEMO.md](DEMO.md) |
-| Utiliser | [README.md](README.md) |
-| Comprendre | [ARCHITECTURE.md](ARCHITECTURE.md) |
-| Améliorer | [CONTRIBUTING.md](CONTRIBUTING.md) |
-| Explorer | [lib/](lib/) |
-| Comparer | [STRUCTURE.md](STRUCTURE.md) |
-| Détail | [IMPROVEMENTS.md](IMPROVEMENTS.md) |
-| Code | [init-expo.js](init-expo.js), [generate-feature.js](generate-feature.js) |
+### Q: I want to add a feature.
 
-## 🗺️ Carte Mentale
+**A:** Follow [CONTRIBUTING.md](CONTRIBUTING.md) step-by-step.
+
+### Q: Where are the code templates?
+
+**A:** Everything is in [lib/templates.js](lib/templates.js).
+
+### Q: I want to customize dependencies.
+
+**A:** Edit [lib/config.js](lib/config.js).
+
+### Q: What actually changed during the refactor?
+
+**A:** Read [IMPROVEMENTS.md](IMPROVEMENTS.md) or [STRUCTURE.md](STRUCTURE.md).
+
+### Q: How do I run tests?
+
+**A:** Read the Testing section in [DEMO.md](DEMO.md) or use `npm test`.
+
+## 🔗 Quick Links
+
+| Goal         | File                                                                     |
+| ------------ | ------------------------------------------------------------------------ |
+| Start        | [DEMO.md](DEMO.md)                                                       |
+| Use          | [README.md](README.md)                                                   |
+| Understand   | [ARCHITECTURE.md](ARCHITECTURE.md)                                       |
+| Extend       | [CONTRIBUTING.md](CONTRIBUTING.md)                                       |
+| Explore      | [lib/](lib/)                                                             |
+| Compare      | [STRUCTURE.md](STRUCTURE.md)                                             |
+| In-depth     | [IMPROVEMENTS.md](IMPROVEMENTS.md)                                       |
+| Entry Points | [init-expo.js](init-expo.js), [generate-feature.js](generate-feature.js) |
+
+## 🗺️ Mind Map
 
 ```
-EXPO GENERATOR
+EXPO FORGE
 │
-├─ 🚀 COMMENCER
+├─ 🚀 GETTING STARTED
 │  └─ DEMO.md
 │
-├─ 📖 APPRENDRE
+├─ 📖 LEARN
 │  ├─ README.md
 │  ├─ ARCHITECTURE.md
 │  └─ STRUCTURE.md
 │
-├─ 🛠️ ÉTENDRE
+├─ 🛠️ EXTEND
 │  └─ CONTRIBUTING.md
 │
-├─ 🔍 EXPLORER
+├─ 🔍 EXPLORE
 │  └─ lib/
 │     ├─ config.js
 │     ├─ executor.js
@@ -271,47 +290,47 @@ EXPO GENERATOR
 │     ├─ logger.js
 │     └─ templates.js
 │
-└─ 📊 ANALYSER
+└─ 📊 ANALYZE
    ├─ IMPROVEMENTS.md
    ├─ STRUCTURE.md
    └─ ARCHITECTURE.md
 ```
 
-## 🎯 Prochaines Étapes Recommandées
+## 🎯 Recommended Next Steps
 
-1. **Maintenant** (< 5 min)
-   - Lisez ce fichier
-   - Explorez la structure avec `ls -la`
+1. **Now** (< 5 min)
+   - Read this index.
+   - Explore the directory with `ls -la`.
 
-2. **Bientôt** (5-10 min)
-   - Lisez [DEMO.md](DEMO.md)
-   - Exécutez `npm run init test-app`
+2. **Soon** (5-10 min)
+   - Read [DEMO.md](DEMO.md).
+   - Run `npm run init test-app`.
 
-3. **Plus tard** (Selon votre intérêt)
-   - Lisez [ARCHITECTURE.md](ARCHITECTURE.md)
-   - Contribuez une amélioration
-   - Utilisez dans votre projet
+3. **Later** (Deep dive)
+   - Read [ARCHITECTURE.md](ARCHITECTURE.md).
+   - Contribute an improvement or custom template.
+   - Integrate Forge into your production workflow.
 
-## 📞 Besoin d'Aide?
+## 📞 Need Help?
 
-- 🚀 **Pour démarrer**: [DEMO.md](DEMO.md)
-- 📖 **Pour comprendre**: [ARCHITECTURE.md](ARCHITECTURE.md)
-- 🛠️ **Pour modifier**: [CONTRIBUTING.md](CONTRIBUTING.md)
-- ❔ **Pour des questions**: Lire les FAQs ci-dessus
-- 💻 **Pour du support**: Créer une issue (if git)
+- 🚀 **Quickstart**: [DEMO.md](DEMO.md)
+- 📖 **Deep Dive**: [ARCHITECTURE.md](ARCHITECTURE.md)
+- 🛠️ **Customization**: [CONTRIBUTING.md](CONTRIBUTING.md)
+- ❔ **Questions**: See FAQs above.
+- 💻 **Support**: Open an issue on GitHub.
 
-## 🎉 Résumé
+## 🎉 Summary
 
-Vous avez accès à:
+You have access to:
 
-✅ **Code bien organisé** - 8 modules modulaires  
-✅ **Documentation complète** - 6 guides détaillés  
-✅ **Exemples pratiques** - 20+ exemples de code  
-✅ **Architecture solide** - Principes SOLID appliqués  
-✅ **Guide de contribution** - Pour les améliorations  
+✅ **Highly organized code** – 8 focused modules.  
+✅ **Comprehensive documentation** – 6 deep guides.  
+✅ **Practical examples** – 20+ real-world code snippets.  
+✅ **Solid architecture** – Strict SOLID principles.  
+✅ **Contribution ready** – Detailed extension guide.
 
-Commencez par [DEMO.md](DEMO.md) et amusez-vous! 🚀
+Start with **[DEMO.md](DEMO.md)** and enjoy forging! 🚀
 
 ---
 
-**Bon développement!** 😊
+**Happy Coding!** 😊

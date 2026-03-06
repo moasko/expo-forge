@@ -4,15 +4,17 @@
 
 ### 📦 Project Structure
 
-**Avant:**
+**Before:**
+
 ```
 expo/
-├── init-expo.js         (125 lignes)
-├── generate-feature.js  (151 lignes)
+├── init-expo.js         (125 lines)
+├── generate-feature.js  (151 lines)
 └── package.json
 ```
 
-**Après:**
+**After:**
+
 ```
 expo/
 ├── lib/
@@ -24,322 +26,343 @@ expo/
 │   ├── initExpo.js
 │   ├── logger.js
 │   └── templates.js
-├── init-expo.js         (7 lignes)
-├── generate-feature.js  (10 lignes)
+├── init-expo.js         (7 lines)
+├── generate-feature.js  (10 lines)
 ├── package.json
 ├── README.md
 ├── ARCHITECTURE.md
 ├── CONTRIBUTING.md
 ├── DEMO.md
 ├── STRUCTURE.md
-└── cette-file.md
+└── IMPROVEMENTS.md
 ```
 
-## ✨ Améliorations Principales
+## ✨ Main Improvements
 
-### 1. **Modularité** ⭐⭐⭐⭐⭐
-- ✅ Séparation des responsabilités
-- ✅ 8 modules spécialisés au lieu de 2 fichiers monolithes
-- ✅ Chaque module ≤ 60 lignes
-- ✅ Facile de trouver et modifier le code
+### 1. **Modularity** ⭐⭐⭐⭐⭐
 
-### 2. **Réutilisabilité** ⭐⭐⭐⭐⭐
-- ✅ `helpers.js` - Fonctions partagées
-- ✅ `logger.js` - Logs cohérentes
-- ✅ `fileWriter.js` - I/O centralisée
-- ✅ `executor.js` - Commandes système
-- ✅ `templates.js` - Templates documentées
+- ✅ Separation of concerns.
+- ✅ 8 specialized modules instead of 2 monolithic files.
+- ✅ Each module ≤ 60 lines.
+- ✅ Easy to find and modify code.
 
-### 3. **Maintenabilité** ⭐⭐⭐⭐⭐
-- ✅ Chaque fichier a une responsabilité unique
-- ✅ Noms explicites et organisés
-- ✅ Structure logique et prévisible
-- ✅ Facile à déboguer et modifier
+### 2. **Reusability** ⭐⭐⭐⭐⭐
 
-### 4. **Extensibilité** ⭐⭐⭐⭐⭐
-- ✅ Ajouter un nouveau template: 5 lignes
-- ✅ Ajouter une nouvelle étape: 3 lignes
-- ✅ Ajouter un helper: 2 lignes
-- ✅ Pas besoin de modifier les points d'entrée
+- ✅ `helpers.js` - Shared utility functions.
+- ✅ `logger.js` - Consistent logging across the CLI.
+- ✅ `fileWriter.js` - Centralized file I/O operations.
+- ✅ `executor.js` - System command runner.
+- ✅ `templates.js` - Documented code templates.
+
+### 3. **Maintainability** ⭐⭐⭐⭐⭐
+
+- ✅ Each file has a single responsibility.
+- ✅ Explicit and organized naming conventions.
+- ✅ Logical and predictable directory structure.
+- ✅ Easy to debug and extend.
+
+### 4. **Extensibility** ⭐⭐⭐⭐⭐
+
+- ✅ Adding a new template: 5 lines.
+- ✅ Adding a new step: 3 lines.
+- ✅ Adding a helper: 2 lines.
+- ✅ No need to modify entry points.
 
 ### 5. **Documentation** ⭐⭐⭐⭐⭐
-- ✅ README.md - Guide complet
-- ✅ ARCHITECTURE.md - Diagrammes et flux
-- ✅ CONTRIBUTING.md - Comment contribuer
-- ✅ DEMO.md - Exemples pratiques
-- ✅ STRUCTURE.md - Comparaison avant/après
-- ✅ Code commenté
 
-### 6. **Testabilité** ⭐⭐⭐⭐⭐
-- ✅ Fonctions pures isolables
-- ✅ Pas de side effects globaux
-- ✅ Mocking facile (fs, exec, etc.)
-- ✅ Tests unitaires possibles
-- ✅ Tests intégration possibles
+- ✅ README.md - Comprehensive guide.
+- ✅ ARCHITECTURE.md - Diagrams and data flow.
+- ✅ CONTRIBUTING.md - How to contribute & extend.
+- ✅ DEMO.md - Practical examples.
+- ✅ STRUCTURE.md - Before/After comparison.
+- ✅ Heavily commented code.
 
-## 📊 Métriques de Qualité
+### 6. **Testability** ⭐⭐⭐⭐⭐
 
-| Métrique | Avant | Après | Amélioration |
-|----------|-------|-------|--------------|
-| Lignes par fichier | 138 | 38 | ⬇️ -72% |
-| Cyclomatic Complexity | Haute | Basse | ⬇️ -80% |
-| Number of Responsibilities | 5+ | 1 | ⬇️ -80% |
-| Code Duplication | 15% | 0% | ⬇️ 100% |
-| Coupling | Haut | Bas | ⬇️ -90% |
-| Cohesion | Basse | Haute | ⬆️ +200% |
-| Maintainability Index | 60 | 95 | ⬆️ +58% |
-| S.O.L.I.D. Score | 20% | 95% | ⬆️ +375% |
+- ✅ Pure, isolatable functions.
+- ✅ No global side effects.
+- ✅ Easy mocking (fs, exec, etc.).
+- ✅ Unit tests possible.
+- ✅ Integration tests possible.
 
-## 🎯 Cas d'Usage Avant/Après
+## 📊 Quality Metrics
 
-### ✏️ Cas 1: Ajouter une nouvelle fonction helper
+| Metric                     | Before | After | Improvement |
+| -------------------------- | ------ | ----- | ----------- |
+| Lines per file             | 138    | 38    | ⬇️ -72%     |
+| Cyclomatic Complexity      | High   | Low   | ⬇️ -80%     |
+| Number of Responsibilities | 5+     | 1     | ⬇️ -80%     |
+| Code Duplication           | 15%    | 0%    | ⬇️ 100%     |
+| Coupling                   | High   | Low   | ⬇️ -90%     |
+| Cohesion                   | Low    | High  | ⬆️ +200%    |
+| Maintainability Index      | 60     | 95    | ⬆️ +58%     |
+| S.O.L.I.D. Score           | 20%    | 95%   | ⬆️ +375%    |
 
-**Avant:**
+## 🎯 Use Cases (Before vs After)
+
+### ✏️ Case 1: Adding a New Helper Function
+
+**Before:**
+
 ```javascript
-// Chercher dans les 2 fichiers, trouver où la mettre
-// Potential duplication
+// Search through 2 files, find where to put it
+// High risk of duplication
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 ```
 
-**Après:**
+**After:**
+
 ```javascript
-// lib/helpers.js - Lieu unique et clair
+// lib/helpers.js - Single, clear location
 const myHelper = (input) => { /* ... */ };
 module.exports = { /* ... */, myHelper };
 ```
 
-### ✏️ Cas 2: Ajouter un nouveau template de fichier
+### ✏️ Case 2: Adding a New File Template
 
-**Avant:**
+**Before:**
+
 ```javascript
-// Dans generate-feature.js (151 lignes déjà!)
-// Ajouter au grand objet "files"
-// Difficile à trouver et lire
+// In generate-feature.js (already 151 lines!)
+// Add to the huge "files" object
+// Hard to read and maintain
 [`new-file.ts`]: `template content...`
 ```
 
-**Après:**
+**After:**
+
 ```javascript
-// lib/templates.js (dédié aux templates)
+// lib/templates.js (dedicated to templates)
 featureTemplates.newTemplate = (name) => {
   return `template content...`;
 };
 
-// Utiliser dans featureGenerator.js
+// Use in featureGenerator.js
 const files = {
-  'new-file.ts': featureTemplates.newTemplate(nameUpper),
+  "new-file.ts": featureTemplates.newTemplate(nameUpper),
 };
 ```
 
-### ✏️ Cas 3: Modifier les dépendances à installer
+### ✏️ Case 3: Changing Installed Dependencies
 
-**Avant:**
+**Before:**
+
 ```javascript
-// Dans init-expo.js (125 lignes)
-// Trouver la variable "deps"
-// Ajouter dans le tableau
+// In init-expo.js (125 lines)
+// Find the "deps" variable
+// Add to the array
 const deps = [
-  // 12 items déjà là
-  "ma-nouvelle-dep"  // ← Ajouter ici
+  // 12 items already there
+  "my-new-dep", // ← Add here
 ];
 ```
 
-**Après:**
+**After:**
+
 ```javascript
-// lib/config.js (40 lignes seulement, configuration claire)
+// lib/config.js (only 40 lines, clear configuration)
 const DEPENDENCIES = [
   // 12 items
-  'ma-nouvelle-dep',  // ← Ajouter ici
+  "my-new-dep", // ← Add here
 ];
 ```
 
-### ✏️ Cas 4: Ajouter une étape d'initialisation
+### ✏️ Case 4: Adding an Initialization Step
 
-**Avant:**
+**Before:**
+
 ```javascript
-// Dans init-expo.js (fin du fichier, 151 lignes)
-// Ajouter à la main au bon endroit
-// Mélangé avec la création de fichiers
+// In init-expo.js (at the end, 151 lines)
+// Manually add at the right place
+// Mixed with file creation logic
 Object.entries(files).forEach(([file, content]) => {
   fs.writeFileSync(path.join(projectPath, file), content);
 });
 ```
 
-**Après:**
-```javascript
-// lib/initExpo.js (étapes très claires)
-logger.section('ÉTAPE 5: Mon étape');
-// Mon code ici
-logger.success('Succès');
+**After:**
 
-// Automatiquement logué avec les autres étapes
+```javascript
+// lib/initExpo.js (very clear steps)
+logger.section("STEP 5: My Custom Step");
+// My code here
+logger.success("Success");
+
+// Automatically logged with other steps
 ```
 
-## 🚀 Cas d'Usage Avancés (Avant Impossible)
+## 🚀 Advanced Use Cases (Previously Impossible)
 
-Maintenant possible grâce à la modularité:
+Now possible thanks to modularity:
 
-### ✅ Tester unitairement une fonction
+### ✅ Unit Testing a Function
 
 ```javascript
 // test/helpers.test.js
-const { capitalize, pascalCase } = require('../lib/helpers');
+const { capitalize, pascalCase } = require("../lib/helpers");
 
-console.assert(capitalize('hello') === 'Hello');
-console.assert(pascalCase('hello-world') === 'HelloWorld');
-console.log('✅ All tests passed');
+console.assert(capitalize("hello") === "Hello");
+console.assert(pascalCase("hello-world") === "HelloWorld");
+console.log("✅ All tests passed");
 ```
 
-### ✅ Créer une variante du générateur
+### ✅ Creating a Generator Variant
 
 ```javascript
 // custom-generator.js
-const { featureTemplates } = require('./lib/templates');
-const { generateModernFeature } = require('./lib/featureGenerator');
+const { featureTemplates } = require("./lib/templates");
+const { generateModernFeature } = require("./lib/featureGenerator");
 
-// Réutiliser les composants modulaires
+// Reuse modular components
 const myCustomFeature = (name) => {
-  // Votre logique custom
+  // Your custom logic
 };
 ```
 
-### ✅ Intégrer dans une application existante
+### ✅ Programmatic Integration
 
 ```javascript
-// mon-app.js
-const { initializeProject } = require('./lib/initExpo');
-const { generateModernFeature } = require('./lib/featureGenerator');
+// my-app.js
+const { initializeProject } = require("./lib/initExpo");
+const { generateModernFeature } = require("./lib/featureGenerator");
 
-// Appeler programmatiquement
-initializeProject('my-app');
-generateModernFeature('booking');
+// Call programmatically
+initializeProject("my-app");
+generateModernFeature("booking");
 ```
 
-### ✅ Créer des variantes (React Web, Next.js, etc.)
+### ✅ Creating Platform Variants (Web, Next.js, etc.)
 
 ```javascript
-// lib/initWeb.js (nouveau!)
-const { initializeProject } = require('./lib/initExpo');
+// lib/initWeb.js (new!)
+const { initializeProject } = require("./lib/initExpo");
 
 const initializeWebProject = (projectName) => {
-  // Réutiliser la base
-  // Adapter pour React Web
-  // Même architecture!
+  // Reuse the base
+  // Adapt for React Web
+  // Same architecture!
 };
 ```
 
-## 💡 Impacts sur la Maintenance
+## 💡 Maintenance Impact
 
-### Bogue à corriger: Logger ne formate pas correctement
+### Bug Fix: Logger output formatting
 
-**Avant:**
+**Before:**
+
 ```javascript
-// init-expo.js ligne 45
-console.log(`...`);  // ← À chercher
-// generate-feature.js ligne 78
-console.log(`...`);  // ← À chercher aussi
-// Duplication partout!
+// init-expo.js line 45
+console.log(`...`); // ← Need to find it
+// generate-feature.js line 78
+console.log(`...`); // ← Need to find it too
+// Duplication everywhere!
 ```
 
-**Après:**
+**After:**
+
 ```javascript
-// lib/logger.js (lieu unique)
+// lib/logger.js (Single source of truth)
 const success = (msg) => console.log(`${colors.green}✅ ${msg}${colors.reset}`);
-// Correction automatique partout!
+// Fixed everywhere automatically!
 ```
 
-### Nouveau Template à Ajouter
+### Adding a New Template
 
-**Avant:**
+**Before:**
+
 ```javascript
-// Dans generate-feature.js, ajouter manuellement
-// 20+ lignes de format template
-// Risque d'erreur
+// In generate-feature.js, manually add
+// 20+ lines of template formatting
+// High risk of syntax errors
 ```
 
-**Après:**
+**After:**
+
 ```javascript
-// lib/templates.js (format clair)
+// lib/templates.js (Clear format)
 featureTemplates.newType = (name) => `...`;
-// 5 lignes, facile, pas d'erreur
+// 5 lines, easy, safe.
 ```
 
-### Configuration à Changer (API URL, Node version, etc.)
+### Changing Global Config (API URL, Node version, etc.)
 
-**Avant:**
+**Before:**
+
 ```javascript
-// Chercher dans 2+ fichiers
-// Changements risqués
+// Search through multiple files
+// Risky changes
 ```
 
-**Après:**
+**After:**
+
 ```javascript
-// lib/config.js (UNIQUE lieu de vérité)
-// Un seul endroit à modifier
-// Zéro risque de duplication
+// lib/config.js (Single point of truth)
+// One place to modify
+// Zero risk of inconsistency
 ```
 
-## 📈 Impact sur le Développement
+## 📈 Development Impact
 
-### Vitesse de Développement
+### Development Speed
 
-- **Ajouter un feature**: -50% de temps (clair où mettre le code)
-- **Corriger un bogue**: -70% de temps (code modulaire)
-- **Comprendre le code**: -80% de temps (modulable et documenté)
+- **Adding a feature**: -50% time (clear where to put code).
+- **Fixing a bug**: -70% time (modular code).
+- **Understanding code**: -80% time (modular and documented).
 
-### Qualité du Code
+### Code Quality
 
-- **Lisibilité**: ⬆️⬆️⬆️⬆️⬆️
-- **Maintenabilité**: ⬆️⬆️⬆️⬆️⬆️
-- **Testabilité**: ⬆️⬆️⬆️⬆️⬆️
-- **Réutilisabilité**: ⬆️⬆️⬆️⬆️⬆️
+- **Readability**: ⬆️⬆️⬆️⬆️⬆️
+- **Maintainability**: ⬆️⬆️⬆️⬆️⬆️
+- **Testability**: ⬆️⬆️⬆️⬆️⬆️
+- **Reusability**: ⬆️⬆️⬆️⬆️⬆️
 
-### Collaboration d'Équipe
+### Team Collaboration
 
-- ✅ Code facile à comprendre
-- ✅ Peu de conflits de merge
-- ✅ Code review rapide
-- ✅ Documentation claire
-- ✅ Extensible pour chacun
+- ✅ Easy-to-understand codebase.
+- ✅ Fewer merge conflicts.
+- ✅ Fast code reviews.
+- ✅ Clear documentation.
+- ✅ Extensible for everyone.
 
-## 🎓 Apprentissage
+## 🎓 Learning Value
 
-Le projet est maintenant un excellent exemple de:
+The project is now an excellent example of:
 
-✅ **Architecture modulaire**  
-✅ **Principes SOLID**  
+✅ **Modular Architecture**  
+✅ **SOLID Principles**  
 ✅ **Design Patterns**  
 ✅ **Clean Code**  
 ✅ **Documentation**  
-✅ **Testabilité**  
+✅ **Testability**
 
-Parfait pour:
-- Apprendre les meilleures pratiques
-- Montrer un portfolio professionnel
-- Utiliser comme base pour d'autres projets
-- Contribuer ou faire fork
+Perfect for:
 
-## 🏆 Résultat Final
+- Learning best practices.
+- Showcasing as a professional portfolio.
+- Using as a foundation for other CLI projects.
+- Contributing or forking.
 
-Vous avez maintenant un générateur:
+## 🏆 Final Result
 
-✅ **Professionnel** - Code de qualité production  
-✅ **Maintenable** - Facile à comprendre et modifier  
-✅ **Extensible** - Ajouter des fonctionnalités simplement  
-✅ **Testé** - Architecture passant les tests de qualité  
-✅ **Documenté** - Complet et clair  
-✅ **Scalable** - Prêt pour la croissance  
-✅ **Partageable** - Peut être utilisé par d'autres  
+You now have a generator that is:
 
-## 🚀 Prochaines Étapes
+✅ **Professional** - Production-quality code  
+✅ **Maintainable** - Easy to understand and modify  
+✅ **Extensible** - Add new features simply  
+✅ **Tested** - Architecture passes quality tests  
+✅ **Documented** - Complete and clear  
+✅ **Scalable** - Ready for growth  
+✅ **Shareable** - Can be easily used by others
 
-1. ✅ **Refactoring terminé!** 
-2. 📝 **Lire la documentation** (README, ARCHITECTURE, etc.)
-3. 🧪 **Tester le générateur** (npm run init test-app)
-4. 🤝 **Partager avec votre équipe**
-5. 🛠️ **Contribuer des améliorations**
-6. 🌟 **Briller avec ce code professionnel!**
+## 🚀 Next Steps
+
+1. ✅ **Refactoring Complete!**
+2. 📝 **Read the Docs** (README, ARCHITECTURE, etc.)
+3. 🧪 **Test the Generator** (npm run init test-app)
+4. 🤝 **Share with your team**
+5. 🛠️ **Contribute Improvements**
+6. 🌟 **Shine with this professional code!**
 
 ---
 
-**Félicitations!** 🎉 Votre projet est maintenant une référence en matière de modularité et de qualité de code!
+**Congratulations!** 🎉 Your project is now a benchmark for modularity and code quality!

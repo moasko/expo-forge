@@ -28,7 +28,7 @@
          └────────────────┘
 ```
 
-## 📊 Flux d'Exécution - Initialisation de Projet
+## 📊 Execution Flow - Project Initialization
 
 ```
 1. init-expo.js
@@ -40,12 +40,12 @@
        │   └─→ npx expo install
        ├─→ fileWriter.createDirectories()
        │   └─→ FOLDER_STRUCTURE
-       ├─→ initTemplates (tous les fichiers)
+       ├─→ initTemplates (all files)
        └─→ fileWriter.writeFiles()
            └─→ logger.success()
 ```
 
-## 📊 Flux d'Exécution - Génération de Feature
+## 📊 Execution Flow - Feature Generation
 
 ```
 1. generate-feature.js
@@ -53,7 +53,7 @@
        ├─→ helpers.pascalCase() / .toLowerCase()
        ├─→ fileWriter.createDirectories()
        │   └─→ FEATURE_STRUCTURE
-       ├─→ featureTemplates (7 fichiers)
+       ├─→ featureTemplates (7 files)
        │   ├─→ types()
        │   ├─→ service()
        │   ├─→ queries()
@@ -65,7 +65,7 @@
            └─→ logger.success()
 ```
 
-## 🔄 Cycle de Vie d'une Feature
+## 🔄 Feature Lifecycle
 
 ```
 Feature: "booking"
@@ -73,7 +73,7 @@ Feature: "booking"
 1. pascalCase → "Booking"
 2. toLowerCase → "booking"
 
-3. Créer dossiers:
+3. Create folders:
    src/features/booking/
    ├── api/
    ├── components/
@@ -83,30 +83,30 @@ Feature: "booking"
    ├── types/
    └── utils/
 
-4. Générer fichiers:
+4. Generate files:
    ├── types/index.ts
    │   └─→ export type Booking, CreateBookingDTO, UpdateBookingDTO
    │
    ├── services/booking.service.ts
    │   └─→ getAll, getById, create, update, delete
    │
-   ├── api/useBookings.ts (hooks TanStack Query)
+   ├── api/useBookings.ts (TanStack Query hooks)
    │   └─→ useBookings, useBooking, useCreateBooking, useUpdateBooking, useDeleteBooking
    │
    ├── store/useBookingStore.ts (Zustand)
    │   └─→ filter, sortBy, setFilter, setSortBy
    │
    ├── components/BookingCard.tsx
-   │   └─→ Composant UI réutilisable
+   │   └─→ Reusable UI component
    │
    ├── BookingScreen.tsx
-   │   └─→ Écran principal
+   │   └─→ Main screen
    │
    └── index.ts
-       └─→ Exports publiques
+       └─→ Public exports
 ```
 
-## 📦 Dépendances Entre Modules
+## 📦 Module Dependencies
 
 ```
 logger.js
@@ -122,34 +122,37 @@ initExpo.js ← featureGenerator.js
 Entry Points: init-expo.js, generate-feature.js
 ```
 
-## 🎯 Responsabilités par Module
+## 🎯 Responsibility per Module
 
-| Module | Responsabilité | Exports |
-|--------|-----------------|---------|
-| **logger.js** | Logs formatés avec couleurs | `success, error, info, build, rocket...` |
-| **helpers.js** | Transformation de chaînes | `capitalize, pascalCase, camelCase, kebabCase` |
-| **config.js** | Configuration centralisée | `DEPENDENCIES, FOLDER_STRUCTURE, FEATURE_STRUCTURE` |
-| **executor.js** | Exécution de commandes | `executeCommand, executeCommandSilent, changeDirectory` |
-| **fileWriter.js** | Gestion fichiers/dossiers | `createDirectories, writeFiles, readFile` |
-| **templates.js** | Templates de code | `initTemplates, featureTemplates` |
-| **initExpo.js** | Logique d'initialisation | `initializeProject` |
-| **featureGenerator.js** | Logique de génération | `generateModernFeature, validateFeatureName` |
+| Module                  | Responsibility             | Exports                                                 |
+| ----------------------- | -------------------------- | ------------------------------------------------------- |
+| **logger.js**           | Formatted logs with colors | `success, error, info, build, rocket...`                |
+| **helpers.js**          | String transformations     | `capitalize, pascalCase, camelCase, kebabCase`          |
+| **config.js**           | Centralized configuration  | `DEPENDENCIES, FOLDER_STRUCTURE, FEATURE_STRUCTURE`     |
+| **executor.js**         | System command execution   | `executeCommand, executeCommandSilent, changeDirectory` |
+| **fileWriter.js**       | File/directory management  | `createDirectories, writeFiles, readFile`               |
+| **templates.js**        | Code templates             | `initTemplates, featureTemplates`                       |
+| **initExpo.js**         | Initialization logic       | `initializeProject`                                     |
+| **featureGenerator.js** | Generation logic           | `generateModernFeature, validateFeatureName`            |
 
-## 🔌 Points d'Extension
+## 🔌 Extension Points
 
-### Ajouter une nouvelle dependency
+### Add a new dependency
+
 ```javascript
 // lib/config.js
-DEPENDENCIES.push('my-package');
+DEPENDENCIES.push("my-package");
 ```
 
-### Ajouter un nouveau dossier
+### Add a new folder
+
 ```javascript
 // lib/config.js
-FOLDER_STRUCTURE.push('src/my-folder');
+FOLDER_STRUCTURE.push("src/my-folder");
 ```
 
-### Ajouter un nouveau template
+### Add a new template
+
 ```javascript
 // lib/templates.js
 featureTemplates.myTemplate = (name) => {
@@ -157,49 +160,58 @@ featureTemplates.myTemplate = (name) => {
 };
 ```
 
-### Ajouter une nouvelle étape d'initialisation
+### Add a new initialization step
+
 ```javascript
 // lib/initExpo.js
-// Dans initializeProject()
-logger.section('ÉTAPE X: Description');
-// Ajouter le code
+// Inside initializeProject()
+logger.section("STEP X: Description");
+// Add the code
 ```
 
-## ✅ Tests Possibles
+## ✅ Available Tests
 
-### Unitaires
-- `helpers.js` - Tester capitalize(), pascalCase(), etc.
-- `logger.js` - Vérifier les outputs
-- `fileWriter.js` - Mocks du fs module
+### Unit Tests
 
-### Intégration
-- `initExpo.js` - Créer un projet de test
-- `featureGenerator.js` - Générer une feature de test
+- `helpers.js` - Test capitalize(), pascalCase(), etc.
+- `logger.js` - Verify outputs
+- `fileWriter.js` - Mock fs module
 
-### E2E
-- Flux complet: init → generate features → vérifier structure
+### Integration Tests
 
-## 📈 Scalabilité
+- `initExpo.js` - Create a test project
+- `featureGenerator.js` - Generate a test feature
 
-Pour ajouter de nouvelles fonctionnalités:
+### E2E Tests
 
-1. **Créer un nouveau module dans `lib/`**
+- Full flow: init → generate features → verify structure
+
+## 📈 Scalability
+
+To add new features:
+
+1. **Create a new module in `lib/`**
+
    ```javascript
    // lib/myFeature.js
-   const myFeature = () => { /* ... */ };
+   const myFeature = () => {
+     /* ... */
+   };
    module.exports = { myFeature };
    ```
 
-2. **L'importer dans le module "parent"**
+2. **Import it in the "parent" module**
+
    ```javascript
-   const { myFeature } = require('./myFeature');
+   const { myFeature } = require("./myFeature");
    ```
 
-3. **L'utiliser dans la logique**
+3. **Use it in the logic**
+
    ```javascript
    myFeature();
    ```
 
-4. **Tester indépendamment**
+4. **Test independently**
 
-C'est une architecture SOLID et maintenable! 🎉
+This is a SOLID and maintainable architecture! 🎉

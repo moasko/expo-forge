@@ -1,6 +1,6 @@
 {
   "name": "expo-forge",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Forge modern Expo apps with bulletproof architecture - TanStack Query, Zustand, Axios, NativeWind",
   "author": "moasko <moasko.dev@gmail.com>",
   "license": "MIT",

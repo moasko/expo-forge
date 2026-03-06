@@ -1,44 +1,49 @@
 # Contribution & Extension Guide
 
+Welcome to the **Expo Forge** contribution guide! This document explains how to extend the CLI and follow our design principles.
+
 ## 🎯 How to Extend Expo Forge
 
 ### 1. Add a New Dependency
 
-**Cas**: Vous voulez ajouter Realm (base de données local)
+**Case**: You want to add `realm` (local database) to all new projects.
 
 ```javascript
 // lib/config.js
 const DEPENDENCIES = [
-  // ... dépendances existantes
-  'realm',  // ← Ajouter ici
+  // ... existing dependencies
+  "realm", // ← Add here
 ];
 ```
 
-Les dépendances seront installées lors de `npm run init`.
+The dependencies will be automatically installed during `expo-forge init`.
 
-### 2. Ajouter un Nouveau Dossier à la Structure Initiale
+### 2. Add a New Directory to the Initial Structure
 
-**Cas**: Vous voulez ajouter un dossier `src/middleware`
+**Case**: You want to add a `src/middleware` folder to the scaffold.
 
 ```javascript
 // lib/config.js
 const FOLDER_STRUCTURE = [
-  // ... dossiers existants
-  'src/middleware',  // ← Ajouter ici
+  // ... existing folders
+  "src/middleware", // ← Add here
 ];
 ```
 
-### 3. Ajouter une Nouvelle Feature Template
+### 3. Add a New Feature Template
 
-**Cas**: Vous voulez générer des fichiers pour une "slice Redux"
+**Case**: You want to generate files for a "Redux slice" when creating a feature.
 
 ```javascript
 // lib/templates.js
 const featureTemplates = {
-  // ... templates existants
-  
-  // Nouveau template
-  slice: (nameUpper, nameLower) => `import { createSlice } from '@reduxjs/toolkit';
+  // ... existing templates
+
+  // New template
+  slice: (
+    nameUpper,
+    nameLower,
+  ) => `import { createSlice } from '@reduxjs/toolkit';
 
 interface ${nameUpper}State {
   data: any[];
@@ -64,25 +69,25 @@ export default ${nameLower}Slice.reducer;`,
 };
 ```
 
-Puis utilisez-le dans `lib/featureGenerator.js`:
+Then use it in `lib/featureGenerator.js`:
 
 ```javascript
-// lib/featureGenerator.js - dans generateModernFeature()
+// lib/featureGenerator.js - inside generateModernFeature()
 const files = {
-  // ... fichiers existants
-  `store/${nameLower}.slice.ts`: featureTemplates.slice(nameUpper, nameLower),
+  // ... existing files
+  [`store/${nameLower}.slice.ts`]: featureTemplates.slice(nameUpper, nameLower),
 };
 ```
 
-### 4. Ajouter une Nouvelle Étape d'Initialisation
+### 4. Add a New Initialization Step
 
-**Cas**: Vous voulez configurer un fichier `.gitignore`
+**Case**: You want to configure a custom `.gitignore` file during project setup.
 
 ```javascript
-// lib/initExpo.js - dans initializeProject()
+// lib/initExpo.js - inside initializeProject()
 
-// Avant ou après les étapes existantes
-logger.section('ÉTAPE X: Configuration Git');
+// Before or after existing steps
+logger.section("STEP X: Git Configuration");
 const gitignoreContent = `
 # Dependencies
 node_modules/
@@ -92,50 +97,50 @@ node_modules/
 .env
 .env.local
 `;
-writeFile(path.join(projectPath, '.gitignore'), gitignoreContent);
-logger.success('.gitignore créé');
+writeFile(path.join(projectPath, ".gitignore"), gitignoreContent);
+logger.success(".gitignore created");
 ```
 
-### 5. Ajouter un Nouveau Helper
+### 5. Add a New Helper
 
-**Cas**: Vous avez besoin d'une fonction pour formater les dates
+**Case**: You need a utility function to format dates.
 
 ```javascript
 // lib/helpers.js
 const formatDate = (date) => {
-  return new Date(date).toLocaleDateString('fr-FR');
+  return new Date(date).toLocaleDateString("en-US");
 };
 
 module.exports = {
-  // ... exports existants
+  // ... existing exports
   formatDate,
 };
 ```
 
-Puis utilisez-le:
+Then use it:
 
 ```javascript
-const { formatDate } = require('./helpers');
-console.log(formatDate(new Date())); // "06/03/2026"
+const { formatDate } = require("./helpers");
+console.log(formatDate(new Date())); // "03/06/2026"
 ```
 
-### 6. Ajouter un Nouveau Module Entier
+### 6. Create a New Module
 
-**Cas**: Vous voulez automatiser le déploiement
+**Case**: You want to automate deployment steps.
 
 ```javascript
 // lib/deployer.js
-const logger = require('./logger');
-const { executeCommand } = require('./executor');
+const logger = require("./logger");
+const { executeCommand } = require("./executor");
 
 const deployToEAS = (projectPath) => {
-  logger.section('Déploiement sur EAS');
-  
+  logger.section("Deploying to EAS");
+
   try {
-    executeCommand('eas build --platform all');
-    logger.success('Build EAS complétée');
+    executeCommand("eas build --platform all");
+    logger.success("EAS Build completed");
   } catch (error) {
-    logger.error(`Déploiement échoué: ${error.message}`);
+    logger.error(`Deployment failed: ${error.message}`);
     throw error;
   }
 };
@@ -143,172 +148,204 @@ const deployToEAS = (projectPath) => {
 module.exports = { deployToEAS };
 ```
 
-Puis utilisez-le:
+Then integrate it:
 
 ```javascript
 // lib/initExpo.js
-const { deployToEAS } = require('./deployer');
+const { deployToEAS } = require("./deployer");
 
-// Dans initializeProject()
+// Inside initializeProject()
 deployToEAS(projectPath);
 ```
 
-## 📐 Principes de Design
+## 📐 Design Principles
 
-Suivez ces principes pour maintenir la qualité:
+Follow these principles to maintain high code quality:
 
-### 1. **Responsabilité Unique**
-Chaque module = une seule responsabilité
+### 1. **Single Responsibility (SRP)**
 
-❌ Mauvais:
+Each module should have one responsibility.
+
+❌ Bad:
+
 ```javascript
 // logger-and-executor.js
-const log = () => { /* ... */ };
-const execute = () => { /* ... */ };
+const log = () => {
+  /* ... */
+};
+const execute = () => {
+  /* ... */
+};
 ```
 
-✅ Bon:
+✅ Good:
+
 ```javascript
 // logger.js
-const log = () => { /* ... */ };
+const log = () => {
+  /* ... */
+};
 
 // executor.js
-const execute = () => { /* ... */ };
+const execute = () => {
+  /* ... */
+};
 ```
 
-### 2. **Inversion des Dépendances**
-Les modules bas-niveau ne dépendent pas des hauts
+### 2. **Dependency Inversion**
 
-❌ Mauvais:
+Low-level modules should not depend on high-level ones.
+
+❌ Bad:
+
 ```javascript
 // helpers.js
-const { initializeProject } = require('./initExpo');
-const capitalize = () => { /* ... */ };
+const { initializeProject } = require("./initExpo");
+const capitalize = () => {
+  /* ... */
+};
 ```
 
-✅ Bon:
+✅ Good:
+
 ```javascript
 // helpers.js
-const capitalize = () => { /* ... */ };
+const capitalize = () => {
+  /* ... */
+};
 
 // initExpo.js
-const { capitalize } = require('./helpers');
+const { capitalize } = require("./helpers");
 ```
 
-### 3. **Pas de Duplication**
-Réutilisez les fonctions existantes
+### 3. **DRY (Don't Repeat Yourself)**
 
-❌ Mauvais:
+Reuse existing utility functions.
+
+❌ Bad:
+
 ```javascript
-// Dans featureGenerator.js ET initExpo.js
+// In featureGenerator.js AND initExpo.js
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 ```
 
-✅ Bon:
+✅ Good:
+
 ```javascript
 // helpers.js
 const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
-// featureGenerator.js et initExpo.js
-const { capitalize } = require('./helpers');
+// featureGenerator.js and initExpo.js
+const { capitalize } = require("./helpers");
 ```
 
-### 4. **Gestion d'Erreurs Cohérente**
-Utilisez toujours logger.error() + process.exit()
+### 4. **Consistent Error Handling**
+
+Always use `logger.error()` followed by `process.exit(1)`.
 
 ```javascript
 try {
   // ...
 } catch (error) {
-  logger.error(`Message descriptif: ${error.message}`);
+  logger.error(`Descriptive message: ${error.message}`);
   process.exit(1);
 }
 ```
 
-### 5. **Pas de Side Effects Inattendus**
-Les fonctions pures sont meilleures
+### 5. **Pure Functions (Avoid Side Effects)**
 
-✅ Bon:
+Prefer pure functions without hidden side effects.
+
+✅ Good:
+
 ```javascript
 const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
-// Pas d'I/O, pas de mutations
+// No I/O, no mutations
 ```
 
-❌ Mauvais:
+❌ Bad:
+
 ```javascript
 const capitalize = (str) => {
   const result = str.charAt(0).toUpperCase() + str.slice(1);
-  fs.writeFileSync('log.txt', result); // Side effect!
+  fs.writeFileSync("log.txt", result); // Unexpected side effect!
   return result;
 };
 ```
 
-## 🧪 Comment Tester Vos Modifications
+## 🧪 How to Test Your Changes
 
-### Test Manuel
+### Manual Testing
+
 ```bash
-# Tester l'initialisation
+# Test project initialization
 node init-expo.js test-app
 
-# Tester la génération de feature
+# Test feature generation
 cd test-app
 node ../generate-feature.js generate feature myfeature
 
-# Vérifier la structure
+# Verify structure
 ls -la src/features/myfeature
 ```
 
-### Test de Module
+### Module Testing
+
 ```javascript
 // test/helpers.test.js
-const { capitalize, pascalCase } = require('../lib/helpers');
+const { capitalize, pascalCase } = require("../lib/helpers");
 
-console.assert(capitalize('hello') === 'Hello', 'capitalize failed');
-console.assert(pascalCase('hello') === 'Hello', 'pascalCase failed');
-console.log('✅ All tests passed');
+console.assert(capitalize("hello") === "Hello", "capitalize failed");
+console.assert(pascalCase("hello") === "Hello", "pascalCase failed");
+console.log("✅ All tests passed");
 ```
 
-Exécutez:
+Run with:
+
 ```bash
 node test/helpers.test.js
 ```
 
-## 📋 Checklist Avant de Commit
+## 📋 Pre-Commit Checklist
 
-- [ ] Code respecte les principes SOLID
-- [ ] Pas de duplication
-- [ ] Gestion d'erreurs cohérente
-- [ ] Logs informatifs
-- [ ] Testé manuellement
-- [ ] README mis à jour si nécessaire
-- [ ] ARCHITECTURE.md mis à jour
+- [ ] Code follows SOLID principles
+- [ ] No code duplication (DRY)
+- [ ] Consistent error handling implemented
+- [ ] Informative logs added
+- [ ] Manually tested local changes
+- [ ] README.md updated if necessary
+- [ ] ARCHITECTURE.md updated if necessary
 
-## 🚀 Exemple Complet: Ajouter une Feature "Stripe"
+## 🚀 Full Example: Adding a "Stripe" Integration
 
-### Étape 1: Ajouter les dépendances
+### Step 1: Add Dependencies
+
 ```javascript
 // lib/config.js
 const DEPENDENCIES = [
   // ...
-  '@stripe/stripe-react-native',
+  "@stripe/stripe-react-native",
 ];
 ```
 
-### Étape 2: Ajouter un dossier
+### Step 2: Add Folder
+
 ```javascript
 // lib/config.js
 const FOLDER_STRUCTURE = [
   // ...
-  'src/integration/stripe',
+  "src/integration/stripe",
 ];
 ```
 
-### Étape 3: Créer les templates
+### Step 3: Create Templates
+
 ```javascript
 // lib/templates.js
 const initTemplates = {
   // ...
-  stripeConfig: () => `import { StripeProvider } from '@stripe/stripe-react-native';
+  stripeConfig:
+    () => `import { StripeProvider } from '@stripe/stripe-react-native';
 
 export const publishableKey = process.env.EXPO_PUBLIC_STRIPE_KEY || '';
 
@@ -320,30 +357,32 @@ export const StripeProviderWrapper = ({ children }) => (
 };
 ```
 
-### Étape 4: Utiliser dans l'initialisation
+### Step 4: Map in Initialization
+
 ```javascript
-// lib/initExpo.js - dans initializeProject()
+// lib/initExpo.js - inside initializeProject()
 const files = {
   // ...
-  'src/integration/stripe/config.tsx': initTemplates.stripeConfig(),
+  "src/integration/stripe/config.tsx": initTemplates.stripeConfig(),
 };
 ```
 
-### Étape 5: Tester
+### Step 5: Verify
+
 ```bash
 node init-expo.js stripe-app
 ls src/integration/stripe
 cat src/integration/stripe/config.tsx
 ```
 
-Voilà! 🎉
+That's it! 🎉
 
-## 💡 Conseils
+## 💡 Pro Tips
 
-- Gardez les modules petits (< 200 lignes)
-- Documentez les fonctions complexes
-- Utilisez des noms explicites
-- Groupez les imports par type (core, lib, local)
-- Testez vos modifications avant de les partager
+- Keep modules small (< 200 lines)
+- Document complex logic
+- Use explicit and descriptive names
+- Group imports by type (Node.js, third-party, local)
+- Use `npm run test` before committing
 
-Au plaisir de vos contributions! 🚀
+Happy forging! 🚀

@@ -2,26 +2,29 @@
 
 ## ⚡ Quick Start (5 minutes)
 
-### 1. Initialize a project
+### 1. Initialize a Project
 
 ```bash
+# Using npm
 npm run init my-booking-app
-# OU
+
+# OR running directly with Node
 node init-expo.js my-booking-app
 ```
 
-**Sortie attendue:**
+**Expected Output:**
+
 ```
-🚀 Initialisation d'un projet Expo Ultra-Moderne: my-booking-app...
+🚀 Initializing Ultra-Modern Expo Project: my-booking-app...
 
-──── ÉTAPE 1: Création du projet ────
+──── STEP 1: Creating Project ────
 
-──── ÉTAPE 2: Installation des dépendances ────
+──── STEP 2: Installing Dependencies ────
 
-──── ÉTAPE 3: Création de l'arborescence ────
-✅ Structure de dossiers créée
+──── STEP 3: Creating Directory Structure ────
+✅ Directory structure created
 
-──── ÉTAPE 4: Génération des fichiers ────
+──── STEP 4: Generating Files ────
 ✅ src/api/query-client.ts
 ✅ src/store/useAuthStore.ts
 ✅ src/app/_layout.tsx
@@ -29,34 +32,35 @@ node init-expo.js my-booking-app
 ✅ tailwind.config.js
 ✅ .env.example
 
-──── ✅ SUCCÈS ────
-✨ Projet initialisé avec succès!
+──── ✅ SUCCESS ────
+✨ Project initialized successfully!
 
-Pour démarrer:
+To get started:
   1. cd my-booking-app
   2. npx expo start
 ```
 
-### 2. Naviguer dans le projet
+### 2. Navigate into the Project
 
 ```bash
 cd my-booking-app
 ```
 
-### 3. Créer votre première feature
+### 3. Forge Your First Feature
 
 ```bash
-# Depuis la racine du projet my-booking-app
+# From the root of the my-booking-app project
 node ../generate-feature.js generate feature booking
 ```
 
-**Sortie attendue:**
+**Expected Output:**
+
 ```
-🏗️  Construction de la feature: Booking...
+🏗️ Building feature: Booking...
 
-──── ÉTAPE 1: Création de l'arborescence ────
+──── STEP 1: Creating Directory Structure ────
 
-──── ÉTAPE 2: Génération des fichiers ────
+──── STEP 2: Generating Files ────
 ✅ types/index.ts
 ✅ services/booking.service.ts
 ✅ api/useBookings.ts
@@ -65,40 +69,40 @@ node ../generate-feature.js generate feature booking
 ✅ BookingScreen.tsx
 ✅ index.ts
 
-──── ✅ SUCCÈS ────
-✨ Feature "Booking" créée avec succès!
+──── ✅ SUCCESS ────
+✨ Feature "Booking" created successfully!
 
-📚 Structure générée:
-  📁 types/        - Définitions TypeScript
-  📁 services/     - Logique API (Axios)
-  📁 api/          - Hooks TanStack Query
+📚 Generated Structure:
+  📁 types/        - TypeScript definitions
+  📁 services/     - API Logic (Axios)
+  📁 api/          - TanStack Query hooks
   📁 store/        - Zustand stores
-  📁 components/   - Composants UI
+  📁 components/   - UI components
 
-💡 Prêt à utiliser:
+💡 Ready to use:
   import { BookingScreen } from '@/features/booking';
 ```
 
-### 4. Créer d'autres features
+### 4. Forge More Features
 
 ```bash
-# Feature Payment
+# Payment feature
 node ../generate-feature.js generate feature payment
 
-# Feature Reviews
+# Reviews feature
 node ../generate-feature.js generate feature reviews
 
-# Feature AuthSetup
+# Auth Setup feature
 node ../generate-feature.js generate feature auth-setup
 ```
 
-### 5. Vérifier la structure
+### 5. Verify the Structure
 
 ```bash
-# Afficher tous les fichiers créés
+# List all created features
 ls -la src/features/
 
-# Structure finale:
+# Final structure:
 # src/features/
 # ├── booking/
 # │   ├── api/
@@ -111,16 +115,16 @@ ls -la src/features/
 # │   ├── BookingScreen.tsx
 # │   └── index.ts
 # ├── payment/
-# │   └── (même structure)
+# │   └── (same structure)
 # ├── reviews/
-# │   └── (même structure)
+# │   └── (same structure)
 # └── auth-setup/
-#     └── (même structure)
+#     └── (same structure)
 ```
 
-## 📖 Exemples d'Utilisation Dans le Code
+## 📖 Usage Examples in Code
 
-### Utiliser une Feature
+### Using a Feature Component
 
 ```typescript
 // src/app/booking-page.tsx
@@ -131,10 +135,10 @@ export default function BookingPage() {
 }
 ```
 
-### Utiliser les Hooks
+### Using Hooks
 
 ```typescript
-// Composant quelconque
+// Any component
 import { useBookings, useCreateBooking } from '@/features/booking';
 
 export function BookingList() {
@@ -144,7 +148,7 @@ export function BookingList() {
   return (
     <View>
       {isLoading ? (
-        <Text>Chargement...</Text>
+        <Text>Loading...</Text>
       ) : (
         bookings?.map(booking => (
           <BookingCard key={booking.id} item={booking} />
@@ -155,7 +159,7 @@ export function BookingList() {
 }
 ```
 
-### Utiliser le Store
+### Using the Store
 
 ```typescript
 import { useBookingStore } from '@/features/booking';
@@ -167,30 +171,30 @@ export function BookingFilter() {
     <TextInput
       value={filter}
       onChangeText={setFilter}
-      placeholder="Filtrer les réservations..."
+      placeholder="Filter bookings..."
     />
   );
 }
 ```
 
-### Appeler les Services
+### Calling Services Directly
 
 ```typescript
-import { bookingService } from '@/features/booking/services/booking.service';
+import { bookingService } from "@/features/booking/services/booking.service";
 
 export async function fetchAllBookings() {
   try {
     const bookings = await bookingService.getAll();
-    console.log('Réservations:', bookings);
+    console.log("Bookings:", bookings);
   } catch (error) {
-    console.error('Erreur:', error);
+    console.error("Error:", error);
   }
 }
 ```
 
-## 🎨 Intégration dans une App Réelle
+## 🎨 Real-world App Integration
 
-### Structure Complète
+### Root Layout Structure
 
 ```typescript
 // src/app/_layout.tsx
@@ -221,13 +225,13 @@ export default function HomeScreen() {
 
   return (
     <View className="flex-1 items-center justify-center">
-      <Text className="text-2xl font-bold mb-4">Mon App Expo</Text>
+      <Text className="text-2xl font-bold mb-4">My Expo App</Text>
       <Button
-        title="Aller aux réservations"
+        title="Go to Bookings"
         onPress={() => router.push('/booking')}
       />
       <Button
-        title="Aller aux paiements"
+        title="Go to Payments"
         onPress={() => router.push('/payment')}
       />
     </View>
@@ -244,22 +248,22 @@ export default function BookingPage() {
 }
 ```
 
-## 🔌 Configuration API
+## 🔌 API Client Configuration
 
 ```typescript
 // src/lib/api-client.ts
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3000/api';
+const API_URL = process.env.EXPO_PUBLIC_API_URL || "http://localhost:3000/api";
 
 export const apiClient = axios.create({
   baseURL: API_URL,
-  timeout: parseInt(process.env.EXPO_PUBLIC_API_TIMEOUT || '30000'),
+  timeout: parseInt(process.env.EXPO_PUBLIC_API_TIMEOUT || "30000"),
 });
 
-// Intercepteur pour ajouter le token
+// Request Interceptor (e.g., adding Auth Token)
 apiClient.interceptors.request.use((config) => {
-  const token = localStorage.getItem('authToken');
+  const token = localStorage.getItem("authToken");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -267,17 +271,17 @@ apiClient.interceptors.request.use((config) => {
 });
 ```
 
-## 🧪 Tester le Générateur
+## 🧪 Testing the Generator
 
 ```bash
-# Test rapide
+# Quick test run
 cd /tmp
 node /path/to/expo/init-expo.js test-project
 cd test-project
 node /path/to/expo/generate-feature.js generate feature test-feature
 ls -la src/features/test-feature/
 
-# Devrait montrer:
+# Expected files:
 # ├── api/
 # ├── components/
 # ├── hooks/
@@ -289,9 +293,9 @@ ls -la src/features/test-feature/
 # └── index.ts
 ```
 
-## 📝 Environnement
+## 📝 Environment Setup
 
-Configurez votre `.env` (généré automatiquement):
+Configure your `.env` (automatically generated):
 
 ```bash
 # .env / .env.local
@@ -299,67 +303,70 @@ EXPO_PUBLIC_API_URL=https://api.example.com
 EXPO_PUBLIC_API_TIMEOUT=30000
 ```
 
-## 🚀 Commandes Utiles
+## 🚀 Useful Commands
 
 ```bash
-# Dans la racine du projet généré
+# Inside the generated project root
 
-# Démarrer le serveur
+# Start the dev server
 npx expo start
 
-# Android
+# Run on Android
 npx expo start --android
 
-# iOS
+# Run on iOS
 npx expo start --ios
 
-# Web
+# Run on Web
 npx expo start --web
 
-# Générer une feature
+# Forge a new feature
 node ../generate-feature.js generate feature my-feature
 
-# Nettoyer les caches
+# Clean global caches
 rm -rf node_modules .expo
 npx expo install
 ```
 
-## 🎯 Points Clés à Retenir
+## 🎯 Key Takeaways
 
-✅ **Chaque feature est indépendante** - Vous pouvez les développer en parallèle  
-✅ **Structure cohérente** - Tous les fichiers sont au même endroit  
-✅ **Réutilisable** - Types, hooks, composants prêts à l'emploi  
-✅ **Scalable** - Ajoutez autant de features que vous voulez  
-✅ **Modern Stack** - TanStack Query, Zustand, NativeWind, etc.  
+✅ **Independent features** – Develop isolated modules in parallel.  
+✅ **Strict consistency** – All feature files follow the same pattern.  
+✅ **Ready-to-use** – Pre-generated types, hooks, and UI components.  
+✅ **High Scalability** – Add as many features as your project needs.  
+✅ **Modern Stack** – Built on TanStack Query, Zustand, NativeWind, and more.
 
-## 🆘 Dépannage
+## 🆘 Troubleshooting
 
-### Erreur: "npx: command not found"
+### Error: "npx: command not found"
+
 ```bash
-# Installez Node.js depuis https://nodejs.org
-# Vérifiez: node -v && npm -v
+# Install Node.js from https://nodejs.org
+# Verify: node -v && npm -v
 ```
 
-### Erreur: "Impossible de créer le projet"
+### Error: "Cannot create project"
+
 ```bash
-# Nettoyez et réessayez
+# Clean up and retry
 rm -rf node_modules package-lock.json
 npm install
 npm run init
 ```
 
-### Feature non trouvée après génération
+### Feature missing after generation
+
 ```bash
-# Assurez-vous que vous êtes dans le bon répertoire
-pwd  # Doit être /path/to/my-app
-ls src/features/  # Doit afficher votre feature
+# Verify your current directory
+pwd  # Should be /path/to/my-app
+ls src/features/  # Should list your feature
 ```
 
-## 💡 Prochaines Étapes
+## 💡 Next Steps
 
-1. Lire [README.md](README.md) pour la documentation complète
-2. Lire [ARCHITECTURE.md](ARCHITECTURE.md) pour comprendre l'architecture
-3. Lire [CONTRIBUTING.md](CONTRIBUTING.md) pour contribuer
-4. Créer vos propres features!
+1. Read **[README.md](README.md)** for detailed documentation.
+2. Read **[ARCHITECTURE.md](ARCHITECTURE.md)** to learn about the under-the-hood.
+3. Read **[CONTRIBUTING.md](CONTRIBUTING.md)** to help us grow!
+4. Start forging your own features! ⚔️
 
-Prêt? Let's go! 🚀
+Ready to forge? Let's go! 🚀
