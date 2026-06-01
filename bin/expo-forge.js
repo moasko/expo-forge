@@ -1,73 +1,64 @@
 #!/usr/bin/env node
 
-const { program } = require("commander");
-const path = require("path");
-
-// Import our modules
-const initExpo = require("../lib/initExpo");
-const featureGenerator = require("../lib/featureGenerator");
-const logger = require("../lib/logger");
-
-const pkg = require("../package.json");
+const { program } = require('commander');
+const { initializeProject } = require('../lib/initExpo');
+const { generateFeature } = require('../lib/featureGenerator');
+const logger = require('../lib/logger');
+const pkg = require('../package.json');
 
 program
-  .name("expo-forge")
-  .description("Forge modern Expo apps with bulletproof architecture")
+  .name('expo-forge')
+  .description('Forge modern Expo apps with bulletproof architecture')
   .version(pkg.version);
 
 program
-  .command("init [projectName]")
-  .description("Initialize a new Expo project with bulletproof architecture")
-  .action(async (projectName) => {
+  .command('init <projectName>')
+  .description('Initialize a new Expo project with the Expo Forge architecture')
+  .action((projectName) => {
     try {
-      if (!projectName) {
-        logger.error(
-          "Please provide a project name: expo-forge init <projectName>",
-        );
-        process.exit(1);
-      }
-
-      logger.rocket(`Initializing Expo Forge project: ${projectName}`);
-      await initExpo.initializeProject(projectName);
-      logger.success(`Project ${projectName} created successfully!`);
-      logger.info(`Run: cd ${projectName} && npx expo start`);
+      initializeProject(projectName);
     } catch (error) {
-      logger.error(`Failed to initialize project: ${error.message}`);
+      logger.error(error.message);
       process.exit(1);
     }
   });
 
 program
-  .command("generate <type> <name>")
-  .description("Generate a new feature or component")
-  .action(async (type, name) => {
+  .command('generate <type> <name>')
+  .alias('g')
+  .description('Generate a new feature')
+  .action((type, name) => {
     try {
-      if (type !== "feature") {
-        logger.error('Currently only "feature" type is supported');
-        process.exit(1);
+      if (type !== 'feature') {
+        throw new Error('Only "feature" generation is currently supported.');
       }
 
-      logger.build(`Generating ${type}: ${name}`);
-      await featureGenerator.generateFeature(name);
-      logger.success(`${type} ${name} generated successfully!`);
+      generateFeature(name);
     } catch (error) {
-      logger.error(`Failed to generate ${type}: ${error.message}`);
+      logger.error(error.message);
       process.exit(1);
     }
   });
 
-// Add help examples
+program
+  .command('doctor')
+  .description('Check the local Node.js and npm environment')
+  .action(() => {
+    logger.section('Expo Forge doctor');
+    logger.success(`Node.js ${process.version}`);
+    logger.info('Run "npm --version" and "npx expo --version" if project creation fails.');
+  });
+
 program.addHelpText(
-  "after",
+  'after',
   `
 Examples:
   $ expo-forge init my-app
   $ expo-forge generate feature booking
   $ npx create-expo-forge-app my-app
 
-For more information, visit: https://github.com/moasko/expo-forge
+Project and feature names must be lowercase kebab-case, for example "my-app".
 `,
 );
 
-// Parse command line arguments
 program.parse();

@@ -5,6 +5,7 @@ yarn.lock
 # NPM
 npm-debug.log*
 .npm
+.npm-cache/
 .npmrc
 
 # IDE
@@ -28,6 +29,7 @@ build/
 # Tests
 .nyc_output/
 coverage/
+.test-output/
 
 # Package
 *.tgz
