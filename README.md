@@ -99,10 +99,20 @@ npm run lint
 npm pack --dry-run
 ```
 
-Then publish with an authenticated npm account:
+Publish to GitHub Packages:
 
 ```bash
-npm publish
+npm login --scope=@moasko --auth-type=legacy --registry=https://npm.pkg.github.com
+npm run publish:github
+```
+
+Use your GitHub username as the username and a GitHub personal access token
+(classic) with `write:packages` as the password.
+
+Publish to npmjs:
+
+```bash
+npm run publish:latest
 ```
 
 ## License

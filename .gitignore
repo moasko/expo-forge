@@ -6,7 +6,6 @@ yarn.lock
 npm-debug.log*
 .npm
 .npm-cache/
-.npmrc
 
 # IDE
 .vscode/
